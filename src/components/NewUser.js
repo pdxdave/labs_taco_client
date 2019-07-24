@@ -14,14 +14,17 @@ class NewUser extends Component {
 
     changeHandler = (e) => {
       this.setState({
-          [e.target.id]: e.target.value
-      })
+          user: {
+              ...this.state.user,
+              [e.target.id]: e.target.value
+          }
+       })
     }
 
     submitHandler = (e) => {
         e.preventDefault();
         this.props.newUser(this.state.user)
-        
+
         // reset state
         this.setState({
             user: {
