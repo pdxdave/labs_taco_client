@@ -6,10 +6,10 @@ export const NEW_USER_FAILURE = "NEW_USER_FAILURE";
 
 
 // For adding a new user
-export const newUser = () => dispatch => {
+export const newUser = (newUser) => dispatch => {
     dispatch({ type: NEW_USER_START })
     axios 
-    .post("http://localhost:5000/add")
+    .post("http://localhost:5000/add", newUser)
     .then(res => {
         console.log('from actions', res.data)
         dispatch({
