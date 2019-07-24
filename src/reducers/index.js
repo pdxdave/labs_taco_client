@@ -8,7 +8,7 @@ const initialState = {
     error: ''
 }
 
-export const reducer = ( state = initialState, action) => {
+const reducer = ( state = initialState, action) => {
     switch(action.type) {
         case NEW_USER_START:
             return {
@@ -34,3 +34,5 @@ export const reducer = ( state = initialState, action) => {
     }
     
 }
+
+export default reducer;

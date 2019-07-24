@@ -16,13 +16,14 @@ class NewUser extends Component {
       this.setState({
           user: {
               ...this.state.user,
-              [e.target.id]: e.target.value
+              [e.target.name]: e.target.value
           }
-       })
+       })  
     }
 
-    submitHandler = (e) => {
+    newUser = (e) => {
         e.preventDefault();
+        console.log('test', this.state.user) // making it here
         this.props.newUser(this.state.user)
 
         // reset state
@@ -39,11 +40,11 @@ class NewUser extends Component {
     render(){
         return(
             <div>
-               <form onSubmit={this.submitHandler}>
+               <form>
                    <div>
                      <label>First Name</label>
                      <input type="text"
-                       id="first_name"
+                       name="first_name"
                        placeholder="first name"
                        onChange={this.changeHandler}
                        value={this.state.user.first_name}
@@ -52,7 +53,7 @@ class NewUser extends Component {
                    <div>
                      <label>Last Name</label>
                      <input type="text"
-                       id="last_name"
+                       name="last_name"
                        placeholder="last name"
                        onChange={this.changeHandler}
                        value={this.state.user.last_name}
@@ -61,19 +62,17 @@ class NewUser extends Component {
                    <div>
                      <label>Email</label>
                      <input type="email"
-                      id="email"
+                      name="email"
                       placeholder="email"
                       onChange={this.changeHandler}
                       value={this.state.user.email}
                      />
                    </div>
-                   <button>Create User</button>
+                   <button onClick={this.newUser}>Create User</button>
                </form>
             </div>
         )
     }
 }
-
-
 
 export default connect(null, {newUser})(NewUser);
