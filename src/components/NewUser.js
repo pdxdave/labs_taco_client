@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
+import {newUser} from '../actions'
 
 class NewUser extends Component {
 
@@ -11,12 +12,24 @@ class NewUser extends Component {
         }
     }
 
-    changeHandler = () => {
- 
+    changeHandler = (e) => {
+      this.setState({
+          [e.target.id]: e.target.value
+      })
     }
 
     submitHandler = (e) => {
         e.preventDefault();
+        this.props.newUser(this.state.user)
+        
+        // reset state
+        this.setState({
+            user: {
+                first_name: '',
+                last_name: '',
+                email: '' 
+            }
+        })
     }
 
 
@@ -58,10 +71,6 @@ class NewUser extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
 
-    }
-}
 
-export default connect(mapStateToProps)(NewUser);
+export default connect(null, {newUser})(NewUser);
