@@ -3,6 +3,8 @@ import User from './User';
 import {connect} from 'react-redux'
 import {userList} from '../actions'
 
+import './user.css'
+
 class UserList extends Component{
 
     componentDidMount(){
@@ -11,7 +13,7 @@ class UserList extends Component{
 
     render(){
         return(
-        <div>
+        <div className="wrapper">
            {this.props.users.map(user => {
                return (
                    <User user={user} />

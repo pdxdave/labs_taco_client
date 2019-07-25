@@ -25,7 +25,7 @@ class NewUser extends Component {
         e.preventDefault();
         console.log('test', this.state.user) // making it here
         this.props.newUser(this.state.user)
-
+        
         // reset state
         this.setState({
             user: {
@@ -34,6 +34,7 @@ class NewUser extends Component {
                 email: '' 
             }
         })
+        
     }
 
 
