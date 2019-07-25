@@ -3,7 +3,7 @@ import User from './User';
 import {connect} from 'react-redux'
 import {userList} from '../actions'
 
-import './user.css'
+
 
 class UserList extends Component{
 

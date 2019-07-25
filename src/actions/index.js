@@ -6,6 +6,9 @@ export const NEW_USER_FAILURE = "NEW_USER_FAILURE";
 export const USER_LIST_START = "USER_LIST_START"
 export const USER_LIST_SUCCESS = "USER_LIST_SUCCESS"
 export const USER_LIST_FAILURE = "USER_LIST_FAILURE"
+export const USER_DELETE_START = "USER_DELETE_START"
+export const USER_DELETE_SUCCESS = "USER_DELETE_SUCCESS"
+export const USER_DELETE_FAILURE = "USER_DELETE_FAILURE"
 
 
 // For adding a new user
@@ -46,4 +49,23 @@ export const userList = () => dispatch => {
              payload: err.response.data
          })
      })
+}
+
+export const delUser = (id) => dispatch => {
+    dispatch({ tyle: USER_DELETE_START })
+    axios
+      .delete(`http://localhost:5000/remove/${id}`)
+      .then(res => {
+          console.log(res.data);
+          dispatch({
+              type: USER_DELETE_SUCCESS,
+              payload: res.data
+          })
+      })
+      .catch(err => {
+          dispatch({
+              type: USER_DELETE_FAILURE,
+              payload: err.response.data
+          })
+      })
 }
